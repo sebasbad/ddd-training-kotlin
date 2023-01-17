@@ -1,10 +1,9 @@
 package com.ddd_bootcamp.domain
 
-import java.util.Objects
-import java.util.UUID
+import java.util.*
 
 class Cart {
-    val id = UUID.randomUUID()
+    val id = CartId()
     val cartItems: MutableList<CartItem> = ArrayList()
     private val removedCartItems: MutableList<CartItem> = ArrayList()
 
