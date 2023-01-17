@@ -20,19 +20,19 @@ object Application {
         )
         cart1.add(headphone)
         cart2.add(headphone)
-        printCart("Cart1", cart1)
-        printCart("Cart2", cart2)
+        cart1.print("Cart1")
+        cart2.print("Cart2")
         println("Are cart1 & cart2 the same? ${cart1 == cart2}")
     }
 }
 
-private fun printCart(cartName: String, cart: Cart) {
+private fun Cart.print(cartName: String) {
     println("----------------------------------------")
     println("----------------- $cartName ----------------")
     println("----------------------------------------")
-    println("Cart = $cart")
-    val cartItems = cart.items.joinToString("\n\t") { it.toString() }
-    val removedCartItems = cart.removedItems.joinToString("\n\t") { it.toString() }
+    println("Cart = $this")
+    val cartItems = this.items.joinToString("\n\t") { it.toString() }
+    val removedCartItems = this.removedItems.joinToString("\n\t") { it.toString() }
     println("----------------------------------------")
     println("Cart Items = \n$cartItems")
     println("----------------------------------------")
