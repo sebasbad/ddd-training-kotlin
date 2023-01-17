@@ -27,4 +27,16 @@ internal class CartTest {
         assertEquals(1, cart.removedItems.size)
         assertEquals(listOf("Some test product"), cart.removedProductNames)
     }
+
+    @Test
+    fun `cart checkout should returns an order with cart products`() {
+        val cart = Cart()
+        val product = Product("Some test product", priceTest)
+        cart.add(CartItem(2, product))
+
+        val order = cart.checkOut()
+
+        assertEquals(2, order.products.size)
+        assertEquals(true, cart.checkedOut)
+    }
 }

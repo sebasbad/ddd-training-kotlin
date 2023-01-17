@@ -11,7 +11,7 @@ object Application {
         val priceHeadphone = Price(10.0)
         val discountedPriceHeadphone = discount.getDiscountedPrice(priceHeadphone)
         val headphone = CartItem(
-            quantity = 1,
+            quantity = 2,
             product = Product(
                 name = "Sony Wireless headphone",
                 price = discountedPriceHeadphone,
@@ -22,6 +22,11 @@ object Application {
         cart1.print("Cart1")
         cart2.print("Cart2")
         println("Are cart1 & cart2 the same? ${cart1 == cart2}")
+
+        println("----------------------------------------")
+        println("----------- Cart1 Chechout -------------")
+        println("----------------------------------------")
+        println(cart1.checkOut())
     }
 }
 

@@ -4,6 +4,7 @@ import java.util.*
 
 class Cart {
     val id = CartId()
+    var checkedOut = false
     val cartItems: MutableList<CartItem> = ArrayList()
     private val removedCartItems: MutableList<CartItem> = ArrayList()
 
@@ -26,6 +27,17 @@ class Cart {
 
     val removedProductNames get(): List<String> = removedItems.map { it.product.name }
 
+    fun checkOut(): Order = cartItems.flatMap { cartItem ->
+        buildList {
+            for (i in 0 until cartItem.quantity) {
+                add(cartItem.product)
+            }
+        }
+    }.also {
+        checkedOut = true
+    }.let { products ->
+        Order(products)
+    }
     override fun toString(): String {
         return "Cart{" +
                 "cartItems=" + cartItems +
