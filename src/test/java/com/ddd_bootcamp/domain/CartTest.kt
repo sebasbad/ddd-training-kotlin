@@ -4,10 +4,11 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class CartTest {
+    private val priceTest = Price(5.0)
     @Test
     fun shouldAddProductToCart() {
         val cart = Cart()
-        val product = Product("Some test product")
+        val product = Product("Some test product", priceTest)
         cart.add(CartItem(2, product))
         val items = cart.items
         assertEquals(2, items.sumOf { it.quantity })
@@ -17,7 +18,7 @@ internal class CartTest {
     @Test
     fun shouldRemoveProductFromCart() {
         val cart = Cart()
-        val product = Product("Some test product")
+        val product = Product("Some test product", priceTest)
         cart.add(CartItem(2, product))
 
         cart.remove(product.name)

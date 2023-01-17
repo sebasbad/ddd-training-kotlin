@@ -2,6 +2,7 @@ package com.ddd_bootcamp.application
 
 import com.ddd_bootcamp.domain.Cart
 import com.ddd_bootcamp.domain.CartItem
+import com.ddd_bootcamp.domain.Price
 import com.ddd_bootcamp.domain.Product
 
 object Application {
@@ -9,7 +10,14 @@ object Application {
     fun main(args: Array<String>) {
         val cart1 = Cart()
         val cart2 = Cart()
-        val headphone = CartItem(1, Product("Sony Wireless headphone"))
+        val priceHeadphone = Price(10.0)
+        val headphone = CartItem(
+            quantity = 1,
+            product = Product(
+                name = "Sony Wireless headphone",
+                price = priceHeadphone,
+            ),
+        )
         cart1.add(headphone)
         cart2.add(headphone)
         cart1.remove(headphone.product.name)

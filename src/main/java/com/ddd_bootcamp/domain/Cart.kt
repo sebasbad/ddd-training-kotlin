@@ -1,5 +1,6 @@
 package com.ddd_bootcamp.domain
 
+import java.util.Objects
 import java.util.UUID
 
 class Cart {
@@ -36,10 +37,5 @@ class Cart {
     override fun equals(other: Any?): Boolean = other is Cart &&
             other.id == this.id
 
-    override fun hashCode(): Int {
-        var result = id?.hashCode() ?: 0
-        result = 31 * result + cartItems.hashCode()
-        result = 31 * result + removedCartItems.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = Objects.hash(id, cartItems, removedItems)
 }
