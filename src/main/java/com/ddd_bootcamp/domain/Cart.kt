@@ -29,7 +29,7 @@ class Cart {
 
     fun checkOut(): Order = cartItems.flatMap { cartItem ->
         buildList {
-            for (i in 0 until cartItem.quantity) {
+            repeat(cartItem.quantity) {
                 add(cartItem.product)
             }
         }
